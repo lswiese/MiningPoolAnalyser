@@ -1,29 +1,21 @@
 # Coinbase Data Processing Script
 
-This repository contains a Python script designed to process multiple CSV files containing hex-encoded mining transaction data. The script decodes the coinbase scripts, matches them to known mining pool names and links, sanitizes the data, and outputs the results in both Excel (.xlsx) and CSV (.csv) formats.
+This repository contains a Python script designed to process multiple CSV files containing hex-encoded CoinBase transaction data (Transaction Input Scripts). `MiningPoolMatcher.py` decodes the coinbase scripts, matches them to known mining pool names and links, sanitizes the data, and outputs the results in both Excel (.xlsx) and CSV (.csv) formats.
 
 The dataset contains mining transaction data for Coinbase transactions, which can be processed to identify mining pool names and related information from encoded script data.
 
 The included Dataset contains 868991 Coinbase Transactions ranging from:
 
 **Start Date:**  
-January 3, 2009, 6:15:05 PM  
+`January 3, 2009, 6:15:05 PM` 
 
 **End Date:**  
-November 6, 2024, 4:01:59 AM
+`November 6, 2024, 4:01:59 AM`
 
 
-## Overview
+## Features & Overview
 
 The script performs the following tasks:
-
-- Decodes hex-encoded coinbase scripts into UTF-8, ASCII, and Hex representations.
-- Matches decoded strings to known mining pool names and links from a provided JSON configuration file.
-- Sanitizes data by removing characters that are invalid in Excel (such as control characters).
-- Extracts relevant columns (Mining Pool Name, Mining Pool Link, TX hash, Timestamp, Date) from the original CSV files.
-- Saves processed data into both Excel and CSV files.
-
-## Features
 
 - **Hex Decoding**: Converts hex-encoded coinbase scripts into UTF-8, ASCII, and Hex formats.
 - **Mining Pool Matching**: Matches decoded coinbase scripts with mining pool names and links from the `coinbase_tags_clean.json` configuration file.
@@ -33,7 +25,7 @@ The script performs the following tasks:
 
 ## Requirements
 
-- Python 3.x
+- `Python 3.x`
 - `pandas` library
 - `openpyxl` library (for Excel file handling)
 
@@ -68,11 +60,11 @@ The `coinbase_tags_clean.json` file contains the mining pool data, with pool nam
 ```json
 {
     "coinbase_tags": {
-        "Pool Name 1": {
+        "Pool Tag": {
             "name": "Pool Name 1",
             "link": "https://pool1.com"
         },
-        "Pool Name 2": {
+        "Pool Tag 2": {
             "name": "Pool Name 2",
             "link": "https://pool2.com"
         }
@@ -91,7 +83,7 @@ The input CSV files, located in the `YearlyCoinbaseTransactions` folder, should 
 - **Timestamp**: Timestamp of the transaction.
 - **Date**: Date of the transaction.
 
-Example of the `transaction_data_1.csv`:
+Example of a `transaction_data_1.csv`:
 
 ```csv
 Input script,Timestamp,TX hash,Date
@@ -104,7 +96,7 @@ Input script,Timestamp,TX hash,Date
 To process the data, run the `script_converter.py` using Python:
 
 ```sh
-python script_converter.py
+python MiningPoolMatcher.py
 ```
 
 The script will automatically:
@@ -168,8 +160,8 @@ Feel free to fork the repository, create a branch, and submit pull requests for 
 
 ## Contributors
 
-- Lucas Wiese - [Lucas Wiese](https://github.com/lswiese)
-- Petr Korab - [Petr Korab](https://github.com/PetrKorab)
+- [Lucas Wiese](https://github.com/lswiese)
+- [Petr Korab](https://github.com/PetrKorab)
 
 ## License
 
